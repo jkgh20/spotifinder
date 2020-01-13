@@ -1014,7 +1014,7 @@
       &lt;div class="leftsidebar col-md-4"&gt;
         {{selectedCities}}
 &nbsp;
-        &lt;Selector 
+        &lt;Selector
           selectorName="cities"
           maxItems="6"
           v-bind:selectedItems="selectedCities"
@@ -1022,7 +1022,7 @@
         &lt;/Selector&gt;
 &nbsp;
         {{selectedGenres}}
-        &lt;Selector 
+        &lt;Selector
           selectorName="genres"
           maxItems="10"
           v-bind:selectedItems="selectedGenres"
@@ -1035,20 +1035,20 @@
         &lt;div class="eventsHolder"&gt;
           &lt;h2&gt;Events Data:&lt;/h2&gt;
 &nbsp;
-          &lt;div v-if="artistImages"&gt; 
-            &lt;PerformerCarousel 
+          &lt;div v-if="artistImages"&gt;
+            &lt;PerformerCarousel
               carouselId="performerCarouselLeft"
               ref="carouselLeft"
               v-bind:artistImages="artistImages"&gt;
             &lt;/PerformerCarousel&gt;
 &nbsp;
-            &lt;PerformerCarousel 
+            &lt;PerformerCarousel
               carouselId="performerCarouselRight"
               ref="carouselRight"
               v-bind:artistImages="artistImages"&gt;
             &lt;/PerformerCarousel&gt;
 &nbsp;
-            &lt;PerformerCarousel 
+            &lt;PerformerCarousel
               carouselId="performerCarouselMain"
               ref="carouselMain"
               v-bind:artistImages="artistImages"&gt;
@@ -1059,7 +1059,7 @@
         &lt;div class="btnHolder" v-if="!isStateStringCorrect"&gt;
           &lt;button class="btn" v-on:click="redirectToURL"&gt;Log In&lt;/button&gt;
         &lt;/div&gt;
-        
+
         &lt;div class="btnHolder" v-if="isStateStringCorrect"&gt;
           &lt;button class="btn" :disabled="playlistLoading" v-on:click="buildPlaylist('Spooky Title', 'Spooooky Description!')"&gt;Build Playlist&lt;/button&gt;
         &lt;/div&gt;
@@ -1183,7 +1183,7 @@ export default {
     },
     availableGenres: {
       get: function() {
-        return store.state.availableGenres; 
+        return store.state.availableGenres;
       },
       set: function(newValue) {
         store.commit("UPDATE_AVAILABLE_GENRES", newValue);
@@ -1233,17 +1233,17 @@ export default {
     }
   },
   mounted () {
-    this.apiAddress = "https://otherside-api.herokuapp.com";
+    this.apiAddress = "https://spotifinder-api.herokuapp.com";
     //this.apiAddress = "http://localhost:8081";
-    
+
     this.initializeStore();
 &nbsp;
     if (this.selectedCities.length != 0 &amp;&amp; this.selectedGenres.length != 0) {
       this.getLocalEvents(this.selectedCities, this.selectedGenres);
-    } 
+    }
 <span class="missing-if-branch" title="else path not taken" >E</span>    if (this.$route.query.state == null) {
       this.setNewSpotifyAuthenticationUrl();
-    } 
+    }
     this.isStateStringCorrect = this.$route.query.state == this.stateString;
     this.token = this.$route.query.token;
   },
@@ -1406,7 +1406,7 @@ export default {
 <span class="cstat-no" title="statement not covered" >                tempPerformers.push(performer);</span>
               });
           }
-        }); 
+        });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        this.localPerformers = tempPerformers;</span>
       }
@@ -1419,14 +1419,14 @@ export default {
 <span class="cstat-no" title="statement not covered" >          if (artist.Name != "" &amp;&amp; artist.ImageURL != "") {</span>
 <span class="cstat-no" title="statement not covered" >            tempArtistImages.push({"Name": artist.Name, "ImageURL": artist.ImageURL});</span>
           }
-        }); 
+        });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        this.artistImages = tempArtistImages;</span>
       }
     },
 <span class="fstat-no" title="function not covered" >    setCarouselStartSlides: function() {</span>
 <span class="cstat-no" title="statement not covered" >      var numberOfPerformers = -1; </span>
-      
+
 <span class="cstat-no" title="statement not covered" >      if (this.artistImages != null) {</span>
 <span class="cstat-no" title="statement not covered" >        numberOfPerformers = this.artistImages.length;</span>
       }

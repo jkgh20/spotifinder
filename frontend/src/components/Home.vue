@@ -7,7 +7,7 @@
 
     <div class="mainBody">
       <div class="leftsidebar">
-        <Selector 
+        <Selector
           selectorName="CITIES"
           maxItems="6"
           index="1"
@@ -15,7 +15,7 @@
           v-bind:availableItems="availableCities">
         </Selector>
 
-        <Selector 
+        <Selector
           selectorName="GENRES"
           maxItems="10"
           index="2"
@@ -30,39 +30,39 @@
 
           <h2 class="loginHeader">3. <strong><em>LOG IN</em></strong> and <strong><em>BUILD</em></strong> your playlist!</h2>
 
-          <div v-if="artistImages"> 
-            <PerformerCarousel 
+          <div v-if="artistImages">
+            <PerformerCarousel
               carouselId="performerCarouselLeft"
               ref="carouselLeft"
               v-bind:artistImages="artistImages">
             </PerformerCarousel>
 
-            <PerformerCarousel 
+            <PerformerCarousel
               carouselId="performerCarouselRight"
               ref="carouselRight"
               v-bind:artistImages="artistImages">
             </PerformerCarousel>
 
-            <PerformerCarousel 
+            <PerformerCarousel
               carouselId="performerCarouselMain"
               ref="carouselMain"
               v-bind:artistImages="artistImages">
             </PerformerCarousel>
           </div>
           <div v-else>
-            <PerformerCarousel 
+            <PerformerCarousel
               carouselId="performerCarouselLeft"
               ref="carouselPlaceholderLeft"
               v-bind:artistImages="placeholderArtistImages">
             </PerformerCarousel>
 
-            <PerformerCarousel 
+            <PerformerCarousel
               carouselId="performerCarouselRight"
               ref="carouselPlaceholderRight"
               v-bind:artistImages="placeholderArtistImages">
             </PerformerCarousel>
 
-            <PerformerCarousel 
+            <PerformerCarousel
               carouselId="performerCarouselMain"
               ref="carouselPlaceholderMain"
               v-bind:artistImages="placeholderArtistImages">
@@ -74,11 +74,11 @@
         <div class="btnHolder" v-if="!isStateStringCorrect">
           <button class="btn" v-on:click="redirectToURL">Log In</button>
         </div>
-        
+
         <div class="btnHolder" v-if="isStateStringCorrect">
-          <button class="btn" :disabled="playlistLoading" 
+          <button class="btn" :disabled="playlistLoading"
             v-on:click="buildPlaylist(
-              'Otherside Playlist', 
+              'Spotifinder Playlist',
               'Playlist featuring artists from around the country!')">
               Build Playlist
           </button>
@@ -197,7 +197,7 @@ export default {
     },
     availableGenres: {
       get: function() {
-        return store.state.availableGenres; 
+        return store.state.availableGenres;
       },
       set: function(newValue) {
         store.commit("UPDATE_AVAILABLE_GENRES", newValue);
@@ -247,16 +247,16 @@ export default {
     }
   },
   mounted () {
-    this.apiAddress = "https://otherside-api.herokuapp.com";
-    
+    this.apiAddress = "https://spotifinder-api.herokuapp.com";
+
     this.initializeStore();
 
     if (this.selectedCities.length != 0 && this.selectedGenres.length != 0) {
       this.getLocalEvents(this.selectedCities, this.selectedGenres);
-    } 
+    }
     if (this.$route.query.state == null) {
       this.setNewSpotifyAuthenticationUrl();
-    } 
+    }
     this.isStateStringCorrect = this.$route.query.state == this.stateString;
     this.token = this.$route.query.token;
   },
@@ -307,7 +307,7 @@ export default {
       axios.get(localEventsURL)
         .then((response => {
           this.localEvents = response.data;
-          if (this.token != null) { 
+          if (this.token != null) {
             this.getArtistIDs(this.localEvents);
           }
           this.setPerformersArray(response.data);
@@ -430,7 +430,7 @@ export default {
                 tempPerformers.push(performer);
               });
           }
-        }); 
+        });
 
         this.localPerformers = tempPerformers;
       }
@@ -443,14 +443,14 @@ export default {
           if (artist.Name != "" && artist.ImageURL != "") {
             tempArtistImages.push({"Name": artist.Name, "ImageURL": artist.ImageURL});
           }
-        }); 
+        });
 
         this.artistImages = tempArtistImages;
       }
     },
     setCarouselStartSlides: function() {
-      var numberOfPerformers = -1; 
-      
+      var numberOfPerformers = -1;
+
       if (this.artistImages != null) {
         numberOfPerformers = this.artistImages.length;
       }
@@ -502,5 +502,3 @@ export default {
   }
 }
 </script>
-
-

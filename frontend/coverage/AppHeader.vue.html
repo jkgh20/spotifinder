@@ -180,7 +180,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
     &lt;b-navbar toggleable="lg" type="dark" variant="info"&gt;
-      &lt;b-navbar-brand href="#"&gt;Otherside&lt;/b-navbar-brand&gt;
+      &lt;b-navbar-brand href="#"&gt;Spotifinder&lt;/b-navbar-brand&gt;
 &nbsp;
       &lt;b-navbar-toggle target="nav-collapse"&gt;&lt;/b-navbar-toggle&gt;
 &nbsp;
@@ -195,7 +195,7 @@
           &lt;b-nav-item-dropdown right&gt;
             &lt;!-- Using 'button-content' slot --&gt;
             &lt;template v-slot:button-content&gt;
-              &lt;span v-if="currentUser"&gt; 
+              &lt;span v-if="currentUser"&gt;
                 {{currentUser}}
               &lt;/span&gt;
               &lt;span v-else&gt;
@@ -235,7 +235,7 @@ export default {
       }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      var currentUserURL = `${this.apiAddress}/user`;</span>
-      
+
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      axios.get(currentUserURL, auth)</span></span>
         .then((response =&gt; {
 <span class="cstat-no" title="statement not covered" >          this.currentUser = response.data;</span>

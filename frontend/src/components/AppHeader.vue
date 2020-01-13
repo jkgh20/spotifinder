@@ -1,6 +1,6 @@
 <template>
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">Otherside</b-navbar-brand>
+      <b-navbar-brand href="#">Spotifinder</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -11,7 +11,7 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-item right>
             <!-- Using 'button-content' slot -->
-              <span v-if="currentUser"> 
+              <span v-if="currentUser">
                 {{currentUser}}
               </span>
               <span v-else>
@@ -48,7 +48,7 @@ export default {
       }
 
       var currentUserURL = `${this.apiAddress}/user`;
-      
+
       axios.get(currentUserURL, auth)
         .then((response => {
           this.currentUser = response.data;
