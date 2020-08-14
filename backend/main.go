@@ -6,13 +6,13 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"otherside/api/seatgeekLayer"
-	"otherside/api/spotifyLayer"
 	"reflect"
 	"strings"
 	"time"
 
-	"otherside/api/redisLayer"
+	"backend/redisLayer"
+	"backend/seatgeekLayer"
+	"backend/spotifyLayer"
 
 	"github.com/gorilla/mux"
 	"github.com/zmb3/spotify"
